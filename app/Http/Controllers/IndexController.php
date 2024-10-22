@@ -40,4 +40,11 @@ class IndexController extends Controller
     {
         return view('product.index');
     }
+
+    public function showProduct(Product $product)
+    {
+        return view('product.show', [
+            'product' => $product
+        ]);
+    }
 }

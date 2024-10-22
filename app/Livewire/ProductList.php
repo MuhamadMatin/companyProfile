@@ -11,11 +11,13 @@ use Livewire\Attributes\Computed;
 
 class ProductList extends Component
 {
-
     use WithPagination;
 
     #[Url()]
     public $search = '';
+
+    #[Url()]
+    public $category = '';
 
     #[On('search')]
     public function updateSearch($search)
@@ -24,9 +26,17 @@ class ProductList extends Component
         $this->resetPage();
     }
 
+    #[On('category')]
+    public function updateCategory($category)
+    {
+        $this->category = $category;
+        $this->resetPage();
+    }
+
     public function resetAll()
     {
         $this->reset('search');
+        $this->reset('category');
         $this->resetPage();
         $this->dispatch('resetAll');
     }
@@ -35,6 +45,9 @@ class ProductList extends Component
     public function products()
     {
         return Product::where('name', 'like', '%' . $this->search . '%')
+            ->when($this->category, function ($query) {
+                return $query->where('category_id', $this->category);
+            })
             ->paginate(20);
     }
 

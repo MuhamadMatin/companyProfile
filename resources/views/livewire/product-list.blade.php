@@ -1,5 +1,5 @@
 <div>
-    @if ($search)
+    @if ($search || $category)
         <div class="flex items-center mt-3 gap-x-2">
             <button class="text-2xl font-bold" wire:click='resetAll()'>
                 <svg class="w-4 h-4" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +14,16 @@
                 </svg>
             </button>
             <div class="flex flex-col gap-x-2">
-                Searcing: {{ $search }}
+                <span>
+                    @if ($search)
+                        Searcing: {{ $search }}
+                    @endif
+                </span>
+                <span>
+                    @if ($category)
+                        Category: {{ $this->products->first()->category->name ?? 'Unknown' }}
+                    @endif
+                </span>
             </div>
         </div>
     @endif

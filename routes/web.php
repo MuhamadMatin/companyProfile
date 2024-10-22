@@ -34,6 +34,9 @@ Route::get('/articles/{article:slug}', [IndexController::class, 'showArticle'])
 Route::get('/products', [IndexController::class, 'indexProduct'])
     ->name('product.index');
 
+Route::get('/products/{product:slug}', [IndexController::class, 'showProduct'])
+    ->name('product.show');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

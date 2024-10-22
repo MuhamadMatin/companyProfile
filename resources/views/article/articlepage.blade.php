@@ -1,8 +1,7 @@
 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
     @forelse ($articles as $article)
         <div class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-2xl">
-            <img src="{{ $article->image ?? '/images/default.jpg' }}" alt="{{ $article->title }}"
-                class="object-cover w-full h-48" loading='lazy'>
+            <img src="{{ $article->image }}" alt="{{ $article->title }}" class="object-cover w-full h-48" loading='lazy'>
 
             <div class="p-4">
                 <h3 class="text-lg font-semibold text-gray-900">

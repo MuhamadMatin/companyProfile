@@ -8,7 +8,8 @@
             </div>
             <h2 class="mb-2 text-xl font-semibold text-gray-800">{{ $product->name }}</h2>
             <p class="mb-4 text-gray-600">{{ Str::limit($product->description, 100) }}</p>
-            <a wire:navigate href="" class="font-medium text-red-600 hover:text-red-900">
+            <a wire:navigate href="{{ route('product.show', $product) }}"
+                class="font-medium text-red-600 hover:text-red-900">
                 Read More →
             </a>
         </div>
